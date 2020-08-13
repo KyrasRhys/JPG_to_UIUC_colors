@@ -35,10 +35,10 @@ def main():
     parser.add_argument("-d", "--decimate", type=int, default=1, help="Decimation factor to make image smaller.")
     parser.add_argument("-o", "--output", help="Output filename.", default="UIUC.jpg")
     parser.add_argument("-i", "--interactive", action='store_true', help="Force interactive mode")
-    parser.add_argument("-a", "--colorarray", default="color_array_ui.npy", help="File path of alternate nearest colors over rgb space to use.")
+    parser.add_argument("-a", "--colorarray", default="color_array_ui.npz", help="File path of alternate nearest colors over rgb space to use.")
     args = parser.parse_args()
     img = plt.imread(path.abspath(args.input))
-    colors_array = np.load(path.abspath(args.colorarray), allow_pickle=True)
+    colors_array = np.load(path.abspath(args.colorarray), allow_pickle=True)['array1']
 
     process(args.interactive, args.decimate, img, colors_array, path.abspath(args.output))
     
